@@ -2,9 +2,10 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
-import { AdminContext } from '../Context/AdminContex';
+import { AdminContext } from '../Context/AdminContext';
 
 const AdminLoginPage = () => {
+    axios.defaults.withCredentials = true;
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -13,11 +14,10 @@ const AdminLoginPage = () => {
     const navigate = useNavigate();
 
     const handleSubmitLogin = async (e) => {
+        e.preventDefault();
 
         try {
-            e.preventDefault();
 
-            axios.defaults.withCredentials = true;
             const { data } = await axios.post(backendUrl + '/admin/login', {
 
                 adminEmail: email,
@@ -26,7 +26,6 @@ const AdminLoginPage = () => {
 
             if (data.success) {
                 navigate('/admin')
-
             } else {
                 toast.error(data.message);
             }

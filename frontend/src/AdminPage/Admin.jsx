@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AdminContext } from '../Context/AdminContex'
+import { AdminContext } from '../Context/AdminContext'
 import toast from 'react-hot-toast';
 import axios from 'axios';
 
@@ -17,16 +17,12 @@ const Admin = () => {
 
   const handleCreatFinancer = async (e) => {
     e.preventDefault();
-    console.log("hllo")
-    console.log(name, password, email)
 
     try {
 
     const {data} = await axios.post(backendUrl + '/financer/register', {
         name, email, password
       })
-
-      console.log(data)
 
       if(data.success) {
         toast.success(data.message)

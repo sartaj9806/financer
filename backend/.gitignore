@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Local environment files
+.env
+.env.*  
+
+# Temporary files
+*.local
+*.cache
+.tmp/
+.tmp*
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Debugging and testing files
+coverage/
+*.pid
+*.seed
+*.pid.lock
+
+# Database files
+*.sqlite
+*.sqlite-journal
+/db-data/

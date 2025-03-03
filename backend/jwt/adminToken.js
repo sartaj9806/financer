@@ -9,8 +9,8 @@ export const generateAdminJWTToken = async (adminUser, res) => {
 
     res.cookie("adminJwt", adminToken, {
         httpOnly: true,
-        secure: false,
-        sameSite: 'lax',
+        secure: process.env.NODE_ENV === "production",
+        sameSite: 'strict',
         path: '/'
     })
 

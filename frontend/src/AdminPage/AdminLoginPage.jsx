@@ -25,6 +25,7 @@ const AdminLoginPage = () => {
             })
 
             if (data.success) {
+                toast.success(data.message)
                 navigate('/admin')
             } else {
                 toast.error(data.message);

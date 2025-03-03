@@ -19,6 +19,7 @@ export const AdminContextProvider = (props) => {
             const { data } = await axios.get(backendUrl + '/admin/is-Login')
 
             if (data.success) {
+                toast.success(data.message)
                 return true;
             } else {
                 if (data.message === 'Not Authorized. Login Again') {
@@ -26,11 +27,12 @@ export const AdminContextProvider = (props) => {
                     navigate('/admin/login')
                     return false;
                 } else {
-                    toast.error(data.message)
+
+                    toast.error(data.message + ' else')
                 }
             }
         } catch (error) {
-            toast.error(error.message + 'error')
+            toast.error(error.message)
         }
     }
 

@@ -4,12 +4,11 @@ import bcrypt from 'bcrypt';
 
 export const createFinancer = async (req, res) => {
 
-    
+
     const { name, email, password } = req.body;
     try {
         if (!name || !email || !password) {
             return res.json({ success: false, message: "All fields are required" });
-            console.log("create financer called")
         }
         const financerExists = await financerModel.findOne({ email });
         if (financerExists) {
@@ -20,12 +19,12 @@ export const createFinancer = async (req, res) => {
 
         const newFinancer = new financerModel({ name, email, password: hashedPassword });
         const response = await newFinancer.save();
-        res.json({ success: true, newFinancer, message : 'successfully create' });
+        res.json({ success: true, newFinancer, response, message: 'successfully create financer' });
     } catch (error) {
         console.log(error)
 
-        res.json({ success : false,  message: error.message});
-    } 
+        res.json({ success: false, message: error.message });
+    }
 }
 
 export const loginFinancer = async (req, res) => {

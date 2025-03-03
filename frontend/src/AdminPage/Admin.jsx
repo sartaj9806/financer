@@ -91,7 +91,7 @@ const Admin = () => {
         <form onSubmit={handleCreatFinancer} className='flex flex-col'>
           <input className='border bg-white outline-none' onChange={(e) => setName(e.target.value)} type="text" placeholder='Enter financer name..' />
           <input className='border bg-white outline-none' onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Enter financer email..' />
-          <input className='border bg-white outline-none' onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Enter financer password..' />
+          <input className='border bg-white outline-none' onChange={(e) => setPassword(e.target.value)} type="text" placeholder='Enter financer password..' />
 
           <button className='bg-blue-600 py-2 rounded-full'>Submit</button>
         </form>

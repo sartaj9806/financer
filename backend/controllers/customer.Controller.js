@@ -165,6 +165,9 @@ export const updateCustomerProfile = async (req, res) => {
         return res.json({ success: false, message: 'All fields are required' })
     }
 
+    const EMIAmount = loanAmount / 100;
+    const withInterest = EMIAmount * 120;
+
 
     try {
         const customer = await customerModal.findById(id);
@@ -175,6 +178,9 @@ export const updateCustomerProfile = async (req, res) => {
         customer.loanAmount = loanAmount;
         customer.openDate = openDate;
         customer.closeDate = closeDate;
+        customer.EMIAmount = EMIAmount;
+        customer.withInterest = withInterest;
+
 
         await customer.save();
 

@@ -64,3 +64,21 @@ export const logoutFinancer = async (req, res) => {
         res.json({ succuss: false, message: error.message })
     }
 }
+
+export const getAllFinancer = async (req, res) => {
+    console.log("get all financer func")
+
+    try {
+        const financer = await financerModel.find();
+
+        if(!financer) {
+            return res.json({success : false, message : 'Financer not found'})
+        }
+
+        res.json({success : true, financer})
+
+    } catch (error) {
+        res.json({success : false, message : error.message})
+    }
+}
+

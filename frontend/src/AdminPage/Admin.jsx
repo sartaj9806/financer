@@ -20,11 +20,11 @@ const Admin = () => {
 
     try {
 
-    const {data} = await axios.post(backendUrl + '/financer/register', {
+      const { data } = await axios.post(backendUrl + '/financer/register', {
         name, email, password
       })
 
-      if(data.success) {
+      if (data.success) {
         toast.success(data.message)
       } else {
         toast.error(data.message)
@@ -36,9 +36,9 @@ const Admin = () => {
   }
 
   return (
-    <div className='px-10 mt-24 bg-red-300 flex justify-between' >
+    <div className='px-4 md:px-10 mt-24 bg-red-300 flex justify-between flex-col md:flex-row' >
 
-      <aside className='border-r w-md p-4'>
+      <aside className='w-full md:border-r md:w-md py-4'>
         <div className='text-right mb-4'>
           <button className='bg-blue-600 px-3 py-1 text-white font-medium text-lg rounded-full'>Add</button>
         </div>
@@ -47,54 +47,44 @@ const Admin = () => {
 
 
           {/* User card */}
-          <div className='border bg-blue-300 px-4 py-2'>
-            <div className='flex justify-between items-center mb-4'>
-              <h2 className='flex-1'>Sartaj Alam</h2>
+          <div className='border  md:border-r-0 bg-blue-300 px-4 py-2'>
+            <div className='flex justify-between items-center'>
+              <h2 className=''>Sartaj Alam</h2>
               <div>
                 <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Edit</button>
                 <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Delete</button>
               </div>
             </div>
+          </div>
 
-            <form>
-
-              <div className='flex gap-2 border'>
-                <div>Name</div>
-                <input type="text" />
+          <div className='border  md:border-r-0 bg-blue-300 px-4 py-2'>
+            <div className='flex justify-between items-center'>
+              <h2 className=''>Sartaj Alam</h2>
+              <div>
+                <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Edit</button>
+                <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Delete</button>
               </div>
-
-            </form>
-
-          </div>
-
-          <div className='flex justify-between items-center border bg-blue-300 px-4 py-2'>
-            <h2 className='flex-1'>Sartaj Alam</h2>
-            <div>
-              <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Edit</button>
-              <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Delete</button>
             </div>
           </div>
 
-          <div className='flex justify-between items-center border bg-blue-300 px-4 py-2'>
-            <h2 className='flex-1'>Sartaj Alam</h2>
-            <div>
-              <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Edit</button>
-              <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Delete</button>
+          <div className='border  md:border-r-0 bg-blue-300 px-4 py-2'>
+            <div className='flex justify-between items-center'>
+              <h2 className=''>Sartaj Alam</h2>
+              <div>
+                <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Edit</button>
+                <button className='px-2 py-1 rounded-full hover:bg-blue-600 hover:text-white'>Delete</button>
+              </div>
             </div>
           </div>
+
+
 
         </div>
 
       </aside>
 
-      <div className='flex justify-center items-center w-2/3 border '>
-        <form onSubmit={handleCreatFinancer} className='flex flex-col'>
-          <input className='border bg-white outline-none' onChange={(e) => setName(e.target.value)} type="text" placeholder='Enter financer name..' />
-          <input className='border bg-white outline-none' onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Enter financer email..' />
-          <input className='border bg-white outline-none' onChange={(e) => setPassword(e.target.value)} type="text" placeholder='Enter financer password..' />
-
-          <button className='bg-blue-600 py-2 rounded-full'>Submit</button>
-        </form>
+      <div className='flex justify-center items-center w-2/3  '>
+        
       </div>
 
     </div>

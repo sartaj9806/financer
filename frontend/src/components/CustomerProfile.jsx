@@ -326,8 +326,8 @@ const CustomerProfile = () => {
           </ul>
 
           <div className='bg-blue-300 flex gap-4 mt-4 justify-end'>
-            <input className='border w-16 bg-white px-2' type="Number" value={emiEntryInputValue} onChange={(e) => setEmiEntryInputValue(e.target.value)} />
-            <input className='border bg-white' type="date" value={emiEntryDateValue} onChange={(e) => setEmiEntryDateValue(e.target.value)} />
+            <input className='border w-20 bg-white px-1' type="Number" value={emiEntryInputValue} onChange={(e) => setEmiEntryInputValue(e.target.value)} />
+            <input className='border bg-white text-black' type="date" value={emiEntryDateValue} onChange={(e) => setEmiEntryDateValue(e.target.value)} />
 
             <button className='bg-blue-600 text-white font-medium rounded-full px-4 py-1 hover:bg-white hover:text-black cursor-pointer' onClick={handleAddSingleEmiEntry}>Add</button>
           </div>

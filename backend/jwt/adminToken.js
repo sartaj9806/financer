@@ -2,10 +2,12 @@ import jwt from 'jsonwebtoken';
 
 
 
-export const generateAdminJWTToken = async (adminUser, res) => {
-    const adminToken = jwt.sign({ adminUser }, process.env.JWT_SECRET, {
+export const generateAdminJWTToken = async (adminPass, res) => {
+    const adminToken = jwt.sign({ adminPass }, process.env.JWT_SECRET, {
         expiresIn: '1h',
     })
+
+    console.log("Admin generate Token : ", adminPass)
 
     res.cookie("adminJwt", adminToken, {
         httpOnly: true,

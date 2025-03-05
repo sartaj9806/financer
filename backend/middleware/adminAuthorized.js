@@ -4,22 +4,21 @@ export const adminAuthorized = async (req, res, next) => {
     const adminToken = req.cookies.adminJwt || req.headers.authorization?.split(' ')[1];
 
     if (!adminToken) {
-        return res.json({ success: false, message: 'Not Authorized. Login Again | Token not provided' })
+        return res.json({ success: false, message: 'Not Authorized. Login Again' })
     }
 
     try {
         const decoded = jwt.verify(adminToken, process.env.JWT_SECRET)
 
-        // console.log("decode admin token : ", decoded.adminUser)
-
-        if(decoded.adminUser !== process.env.ADMIN_USER)
-        {
-            return res.json({success : false , message: 'Not Authorized. Login Again | Admin email not match'})
-        }
         
+        if (decoded.adminPass !== process.env.ADMIN_USER + process.env.ADMIN_PASS) {
+            return res.json({ success: false, message: 'Not Authorized. Login Again' })
+        }
+
         next();
+
     } catch (error) {
-        return res.json({ success: false, message: 'Not Authorized. Login Again | token verify invalid ' })
+        return res.json({ success: false, message: 'Not Authorized. Login Again' })
     }
 
 }

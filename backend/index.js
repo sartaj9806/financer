@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 
 // Enable CORS
-const allowedOrigins = ['http://localhost:5173']
+const allowedOrigins = process.env.FRONTEND_URL
 app.use(
     cors({
         origin: allowedOrigins,

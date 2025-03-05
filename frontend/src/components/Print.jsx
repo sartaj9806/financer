@@ -10,6 +10,9 @@ const Print = () => {
         console.log("Print")
     }, [])
 
+    
+    const totalAmount = allCustomers.reduce((acc, cur) => acc + cur.EMIAmount, 0)
+
     return (
         <div className='container mx-auto mt-8' >
             <table className='w-full'>
@@ -63,6 +66,20 @@ const Print = () => {
                     }
                     )}
                 </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td className=' py-1 px-2 text-center w-8'></td>
+                        <td className=' py-1 px-2 '></td>
+                        <td className=' py-1 text-center w-10 font-medium'>{totalAmount}</td>
+                        <td className=' py-1 px-2 text-center w-20'></td>
+                        <td className=' py-1 text-center w-10'></td>
+                        <td className=' py-1  text-center w-20'></td>
+                        <td className=' py-1  text-center w-20'></td>
+                        <td className=' py-1 px-2 text-center w-14'></td>
+                        <td className=' py-1 px-2 text-center w-14'></td>
+                    </tr>
+                </tfoot>
             </table>
 
         </div>

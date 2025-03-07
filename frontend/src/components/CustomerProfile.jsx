@@ -19,7 +19,7 @@ const CustomerProfile = () => {
 
   const emiUpdateInputRef = useRef();
 
-  const { backendUrl, getSingleCustomer, singleCustomer, setSingleCustomer, handleIsLogin } = useContext(AppContext);
+  const { backendUrl, getSingleCustomer, singleCustomer, setSingleCustomer, handleIsLogin, setAllCustomers } = useContext(AppContext);
 
   const navigate = useNavigate()
 
@@ -188,6 +188,22 @@ const CustomerProfile = () => {
     }
   }
 
+  const handleCustomerProfileDefaulter = async () => {
+    try {
+      const { data } = await axios.put(backendUrl + `/customer/is-defaulter-customer/${id}`)
+
+      if (data.success) {
+        toast.success(data.message)
+        navigate('/')
+      } else {
+        toast.error(data.message)
+      }
+
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
 
 
   return (
@@ -275,6 +291,12 @@ const CustomerProfile = () => {
               <button className='bg-blue-600 text-white font-medium rounded-full px-4 py-1 hover:bg-white hover:text-black cursor-pointer' onClick={handleCustomerProfileEdit}>Edit</button>
 
               <button className='bg-blue-600 text-white font-medium rounded-full px-4 py-1 hover:bg-white hover:text-black cursor-pointer ml-4' onClick={handleCustomerProfileDelete}>Delete</button>
+
+              <button className='bg-blue-600 text-white font-medium rounded-full px-4 py-1 hover:bg-white hover:text-black cursor-pointer ml-4' onClick={handleCustomerProfileDefaulter}>
+                {
+                  singleCustomer.isDefaulter === true ? 'Normal' : 'Defaulter'
+                }
+              </button>
             </div>
           </div>}
 

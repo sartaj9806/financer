@@ -1,5 +1,5 @@
 import express from 'express';
-import { addAllCustomerEmi, addNewCustomer, addSingleCustomerEmi, customerEmiDelete, customerEmiUpdate, deleteCustomerProfile, getAllCustomers, getSingleCustomers, isCustomerLogin, updateCustomerProfile } from '../controllers/customer.Controller.js';
+import { addAllCustomerEmi, addNewCustomer, addSingleCustomerEmi, customerEmiDelete, customerEmiUpdate, deleteCustomerProfile, getAllCustomers, getSingleCustomers, isCustomerLogin, isDefaulterCustomer, updateCustomerProfile } from '../controllers/customer.Controller.js';
 import { authorized } from '../middleware/authorized.js';
 
 const router = express.Router();
@@ -15,6 +15,7 @@ router.put('/add-all-customer-emi', authorized, addAllCustomerEmi)
 router.put('/add-single-customer-emi/:id', authorized, addSingleCustomerEmi)
 router.put('/update-customer-profile/:id', authorized, updateCustomerProfile)
 router.delete('/delete-customer-profile/:id', authorized, deleteCustomerProfile)
+router.put('/is-defaulter-customer/:id', authorized, isDefaulterCustomer)
 
 
 export default router; 

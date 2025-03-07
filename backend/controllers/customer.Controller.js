@@ -210,3 +210,23 @@ export const deleteCustomerProfile = async (req, res) => {
 
 }
 
+export const isDefaulterCustomer = async (req, res) => {
+    const { id } = req.params;
+    try {
+
+
+
+        const customer = await customerModal.findById(id)
+        if (!customer) {
+            return res.json({ success: false, message: 'Customer not found' })
+        }
+        customer.isDefaulter = !customer.isDefaulter;
+        await customer.save();
+
+        res.json({ success: true, message: `change successfully`, defaulterCustomer: customer })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+    }
+}
+

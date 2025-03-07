@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const loanRepaymentSchema = new mongoose.Schema({
-    Date: { type: Date, required: true, default : new Date()},
+    Date: { type: Date, required: true, default: new Date() },
     EMIReceived: { type: Number, required: true }
 });
 
@@ -22,6 +22,7 @@ const customerSchema = new mongoose.Schema({
     shouldReceive: { type: Number, default: 0 },
     pendingBalance: { type: Number, default: 0 },
     loanRepayment: [loanRepaymentSchema],
+    isDefaulter: { type: Boolean, default: false }
 });
 
 customerSchema.pre('save', function (next) {

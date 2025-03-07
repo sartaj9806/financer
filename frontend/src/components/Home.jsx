@@ -26,7 +26,7 @@ const Home = () => {
                         const formattedDate = `${day}-${month}-${year}`;
 
                         return (
-                            <li className={`${customer.EMICount <= 120 ? "bg-blue-400" : "bg-red-300"} flex-1 min-w-[300px] rounded-md  border p-4`} key={customer._id}>
+                            <li className={`${customer.isDefaulter === true ? 'bg-gray-400' : customer.EMICount <= 120 ? "bg-blue-400" : "bg-red-300"} flex-1 min-w-[300px] rounded-md  border p-4`} key={customer._id}>
                                 <div>
                                     <p className='text-lg font-medium text-black'> <span>Name : </span> {customer.name}</p>
                                     <p className='text-lg font-medium text-black'> <span>Close Date : </span> {formattedDate}</p>

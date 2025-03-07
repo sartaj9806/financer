@@ -10,10 +10,17 @@ const CustomerEmiEntry = () => {
 
     const { backendUrl, allCustomers, getAllCustomer, handleIsLogin } = useContext(AppContext);
 
+    const [noDefaultCustomer, setNoDefaultCustomer] = useState([])
+
     useEffect(() => {
         getAllCustomer();
         console.log('Customer Emi Entry')
     }, [])
+
+    useEffect(() => {
+        const filterCustomer = allCustomers.filter((item) => item.isDefaulter !== true)
+        setNoDefaultCustomer(filterCustomer)
+    }, [allCustomers])
 
 
     const handleInputChange = (customerId, value) => {
@@ -29,7 +36,7 @@ const CustomerEmiEntry = () => {
             return
         }
 
-        const allCustomersEmiArray = allCustomers.map(customer => ({
+        const allCustomersEmiArray = noDefaultCustomer.map(customer => ({
             customerId: customer._id,
             EMIReceived: parseFloat(inputValues[customer._id]) || 0,
         }))
@@ -55,7 +62,7 @@ const CustomerEmiEntry = () => {
     return (
         <div className='container mx-auto mt-24'>
 
-            <form className='overflow-x-scroll' onSubmit={createEmiArray}>
+            <form onSubmit={createEmiArray}>
                 <table>
                     <thead>
                         <tr>
@@ -72,7 +79,7 @@ const CustomerEmiEntry = () => {
                     </thead>
 
                     <tbody>
-                        {allCustomers.map((customer, index) => {
+                        {noDefaultCustomer.map((customer, index) => {
                             const opendate = new Date(customer.openDate);
                             const openformattedDate = opendate.toLocaleDateString('en-GB', {
                                 day: '2-digit',

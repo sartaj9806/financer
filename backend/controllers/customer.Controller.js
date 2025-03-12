@@ -126,7 +126,9 @@ export const addAllCustomerEmi = async (req, res) => {
                 return res.json({ success: false, message: "Customer not found" });
             }
 
-            customer.loanRepayment.push({ EMIReceived });
+            
+
+            customer.loanRepayment.push({ EMIReceived, Date: new Date() });
             await customer.save();
         }
         res.json({ success: true, message: "EMI added successfully for all customers" });

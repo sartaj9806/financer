@@ -11,6 +11,7 @@ const CustomerEmiEntry = () => {
     const { backendUrl, allCustomers, getAllCustomer, handleIsLogin } = useContext(AppContext);
 
     const [noDefaultCustomer, setNoDefaultCustomer] = useState([])
+    const [totalEmi, setTotalEmi] = useState(0)
 
     useEffect(() => {
         getAllCustomer();
@@ -27,6 +28,23 @@ const CustomerEmiEntry = () => {
         setInputValues(({ ...inputValues, [customerId]: value, }));
     };
 
+
+
+    useEffect(() => {
+
+        let total = 0;
+
+        const totalEmiCal = () => {
+            for (const key in inputValues) {
+                total += parseFloat(inputValues[key] || 0);
+                setTotalEmi(total)
+            }
+        }
+
+        totalEmiCal()
+
+    }, [inputValues])
+
     const createEmiArray = async (e) => {
         e.preventDefault();
 
@@ -35,6 +53,7 @@ const CustomerEmiEntry = () => {
         if (!isLogin) {
             return
         }
+
 
         const allCustomersEmiArray = noDefaultCustomer.map(customer => ({
             customerId: customer._id,
@@ -121,7 +140,7 @@ const CustomerEmiEntry = () => {
                     </tbody>
                 </table>
 
-                <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" type='submit'>Add Emi</button>
+                <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" type='submit'>Add Emi ( {totalEmi} ) </button>
             </form>
 
 

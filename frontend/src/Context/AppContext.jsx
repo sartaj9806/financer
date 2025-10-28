@@ -13,6 +13,7 @@ export const AppContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [allCustomers, setAllCustomers] = useState([])
     const [singleCustomer, setSingleCustomer] = useState({});
+    const [searchBar, setSearchBar] = useState("");
 
     const navigate = useNavigate();
 
@@ -81,6 +82,32 @@ export const AppContextProvider = (props) => {
         }
     }
 
+    useEffect(() => {
+
+        // const filteredCustomers = allCustomers;
+
+
+        // if (searchBar !== "") {
+        //     const filtered = filteredCustomers.filter((customer) => customer.name.toLowerCase().includes(searchBar.toLowerCase()))
+
+        //     setAllCustomers(filtered);
+        // } else {
+
+        //     setAllCustomers(filteredCustomers);
+        // }
+
+        
+
+        if (searchBar === "") {
+            getAllCustomer();
+        } else {
+            const filteredCustomers = allCustomers.filter((customer) =>
+                customer.name.toLowerCase().includes(searchBar.toLowerCase())
+            );
+            setAllCustomers(filteredCustomers);
+        }
+    }, [searchBar])
+
     const value = {
         backendUrl,
         allCustomers, setAllCustomers,
@@ -88,6 +115,7 @@ export const AppContextProvider = (props) => {
         singleCustomer, setSingleCustomer,
         getAllCustomer,
         handleIsLogin,
+        searchBar, setSearchBar,
     }
 
 

@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GiHamburgerMenu } from "react-icons/gi";
+import { AppContext } from '../Context/AppContext';
 
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const { searchBar, setSearchBar } = useContext(AppContext)
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -37,6 +40,8 @@ const Navbar = () => {
                         </Link>
                     </ul>
                 </nav>
+
+                <input onChange={(e) => setSearchBar(e.target.value)} value={searchBar} type='text' placeholder='Search Client Name...' className='text-black font-medium placeholder:font-normal  pl-1 border border-black rounded-md outline-none bg-white' />
 
                 {/* Mobile menu toggle */}
                 <button onClick={toggleMenu} className="block md:hidden p-2 text-white rounded-full hover:text-white hover:bg-blue-700"><GiHamburgerMenu />

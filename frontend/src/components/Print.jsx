@@ -29,7 +29,7 @@ const Print = () => {
                         <th className='border px-0.5'>Amt</th>
                         <th className='border'>EMI</th>
                         <th className='border px-0.5'>Amt</th>
-                        <th className='border px-0.5'>AC</th>
+                        <th className='border px-0.5'>AC.No</th>
                         <th className='border px-0.5'>Amt</th>
                         <th className='border'>O-Date</th>
                         <th className='border'>C-Date</th>
@@ -64,11 +64,11 @@ const Print = () => {
                             <tr className={`${customer.EMICount > 120 && 'font-bold bg-gray-200'}`} key={customer._id}>
                                 <td className='border py-1 px-1 text-center w-8'>{index + 1}</td>
                                 <td className='border py-1 px-1 '>{customer.name}</td>
-                                <td className='border text-center w-14 '></td>
+                                <td className='border text-center w-12 '></td>
                                 <td className='border py-1 text-center w-10'>{customer.EMIAmount}</td>
-                                <td className='border text-center w-14 '></td>
+                                <td className='border text-center w-12 '></td>
                                 <td className='border py-1 text-center w-10'>{customer.accountNo}</td>
-                                <td className='border text-center w-14 '></td>
+                                <td className='border text-center w-12 '></td>
                                 <td className='border py-1  text-center w-20'>{openformattedDate}</td>
                                 <td className='border py-1  text-center w-20'>{closeformattedDate}</td>
                                 <td className='border py-1 px-1 text-center w-14'>{customer.pendingBalance}</td>

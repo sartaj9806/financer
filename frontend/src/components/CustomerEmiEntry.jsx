@@ -66,6 +66,7 @@ const CustomerEmiEntry = () => {
 
             if (data.success) {
                 toast.success(data.message)
+                setInputValues({})
             } else {
                 toast.error(data.message)
             }
